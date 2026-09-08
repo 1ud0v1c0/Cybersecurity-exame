@@ -1,6 +1,14 @@
 #!/bin/bash
 
 # ==============================================================================
+# ESERCIZIO:
+# - Cercare se esiste un qualche file all'interno della home di un utente che 
+#   sia scrivibile da tutti gli utenti
+# - Cercare se esiste una cartella all'interno della home di un utente che sia 
+#   scrivibile da tutti gli utenti
+# ==============================================================================
+
+# ==============================================================================
 # RICERCA DI FILE E DIRECTORY WORLD-WRITABLE NELLA HOME DI UN UTENTE
 # ==============================================================================
 

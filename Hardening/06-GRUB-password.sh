@@ -1,6 +1,12 @@
 #!/bin/bash
 
 # ==============================================================================
+# ESERCIZIO:
+# Imposta una password a GRUB così da non permettere l'avvio del sistema 
+# operativo con parametri del kernel non standard
+# ==============================================================================
+
+# ==============================================================================
 # SCRIPT PER IMPOSTARE UNA PASSWORD SU GRUB
 # ==============================================================================
 

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# ==============================================================================
+# ESERCIZIO:
+# Configura sudo affinchè un utente possa eseguire solo un comando specifico (e.s: nmap)
+# ==============================================================================
+
 # Definiamo l'utente a cui applicare la regola (cambialo con il nome utente target)
 TARGET_USER="studente"
 

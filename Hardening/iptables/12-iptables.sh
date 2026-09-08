@@ -1,6 +1,13 @@
 #!/bin/bash
 
 # ==============================================================================
+# ESERCIZIO:
+# Imposta Iptables affinchè sia bloccato tutto il traffico Internet sulla 
+# macchina (gli utenti non possono navigare) ma sia funzionante il webserver 
+# (TCP port 80 e 443)
+# ==============================================================================
+
+# ==============================================================================
 # IPTABLES: BLOCCO TRAFFICO IN USCITA (NO NAVIGAZIONE) + WEBSERVER (80, 443) ATTIVO
 # ==============================================================================
 

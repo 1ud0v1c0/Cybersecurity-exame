@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# ==============================================================================
+# ESERCIZIO:
+# Creare uno unit file di Systemd per permettere una shell aperta a tutti sulla 
+# rete (netcat in modalità listen con il processo /bin/bash) e provare a 
+# connettersi dalla propria macchina usando netcat
+# ==============================================================================
+
 # Definiamo il percorso del file di servizio
 SERVICE_FILE="/etc/systemd/system/shell.service"
 

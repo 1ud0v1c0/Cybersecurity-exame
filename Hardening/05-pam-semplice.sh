@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# ==============================================================================
+# ESERCIZIO:
+# Installare e configurare un modulo PAM per richiedere caratteristiche minime 
+# alla password (min 8 caratteri, maiuscole, minuscole e simboli)
+# ==============================================================================
+
 # Definiamo il percorso del file di configurazione
 CONF_FILE="/etc/security/pwquality.conf"
 

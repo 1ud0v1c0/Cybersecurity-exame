@@ -1,6 +1,15 @@
 #!/bin/bash
 
 # ==============================================================================
+# ESERCIZIO:
+# - Rendi la cartella /var/log leggibile solo da root
+# - Configura un utente per poter fare cat dei logs ma non essere amministratore 
+#   (va configurato sudoers in modo opportuno)
+# - Trova tutti i processi che hanno un file descriptor aperto dentro la 
+#   cartella /var/log (il comando lsof tornerà comodo)
+# ==============================================================================
+
+# ==============================================================================
 # GESTIONE E HARDENING DELLA DIRECTORY /var/log
 # ==============================================================================
 
@@ -26,7 +35,7 @@ sudo chmod 0700 /var/log
 echo "[+] Configurazione sudoers per consentire a $TARGET_USER di usare 'cat' sui log..."
 
 # Permette all'utente di eseguire esclusivamente il comando 'cat' sui file dentro /var/log/
-echo "$TARGET_USER ALL=(ALL) /bin/cat /var/log/*" | sudo tee "$SUDOERS_FILE"
+echo "$TARGET_USER ALL=(ALL) /bin/cat /var/log/*, !/bin/cat /var/log/*..*" | sudo tee "$SUDOERS_FILE"
 
 # Imposta i permessi di sicurezza obbligatori per i file dentro sudoers.d (0440)
 sudo chmod 0440 "$SUDOERS_FILE"
