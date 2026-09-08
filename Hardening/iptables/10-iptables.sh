@@ -44,3 +44,23 @@ echo ""
 echo "[+] Configurazione completata. Regole attive:"
 # Mostra la tabella delle regole attive numerate e dettagliate
 sudo iptables -L -v -n
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+# Per testare correttamente il firewall, l'ideale è simulare un accesso dall'ESTERNO,
+# ovvero usando un'altra macchina virtuale o il prompt del tuo computer host.
+#
+# 1. Trova l'IP di questa macchina Debian (con 'ip a' o 'hostname -I', es. 192.168.1.100):
+#    ip a
+#
+# Da un terminale esterno (es. dal tuo Mac o un'altra VM nella stessa rete):
+# 2. Prova a collegarti via SSH (Questo DEVE funzionare):
+#    ssh studente@192.168.1.100   # (sostituisci con l'IP della macchina)
+#
+# 3. Prova a mandare un ping alla macchina (Questo DEVE fallire/timeout):
+#    ping 192.168.1.100
+#
+# 4. Prova a testare un'altra porta, ad esempio scansionandola con netcat
+#    (Questo DEVE fallire perché solo la 22 è consentita):
+#    nc -v -z 192.168.1.100 80
+# ==============================================================================

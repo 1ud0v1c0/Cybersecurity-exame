@@ -36,3 +36,25 @@ echo ""
 echo "[+] Configurazione completata con successo. Regole attive:"
 # Mostra la tabella finale con le porte e le policy applicate
 sudo iptables -L -v -n
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+#
+# DENTRO LA MACCHINA:
+# 1. Prova a navigare o pingare un sito esterno (Questo DEVE funzionare, l'uscita è libera):
+#    ping 8.8.8.8
+#    wget http://google.com
+#
+# DA FUORI LA MACCHINA (es. dal terminale del tuo Mac o da un'altra macchina):
+# (Trova l'IP con 'ip a' o 'hostname -I', es. 192.168.1.100)
+# 2. Prova a collegarti in SSH (Questo DEVE funzionare):
+#    ssh studente@192.168.1.100 (oppure ssh -p 2222 studente@127.0.0.1 se sei in NAT)
+#
+# 3. Prova a scansionare le porte 80 o 443 (Queste DEVONO passare il firewall):
+#    nc -v -z 192.168.1.100 80
+#    nc -v -z 192.168.1.100 443
+#
+# 4. Prova a scansionare o collegarti a una porta NON autorizzata (es. 21 per FTP, o 8080):
+#    nc -v -z 192.168.1.100 21
+#    (Questo DEVE fallire e andare in blocco/timeout perché la porta non è nella lista).
+# ==============================================================================

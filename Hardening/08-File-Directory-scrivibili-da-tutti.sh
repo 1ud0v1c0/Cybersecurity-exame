@@ -44,3 +44,14 @@ echo "[+] Ricerca CARTELLE scrivibili da tutti (world-writable):"
 
 # - "-type d"      : cerca specificamente le directory
 find "$TARGET_HOME" -type d -perm -0002 -ls 2>/dev/null
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+#
+#    touch /home/studente/test.txt
+#    chmod o+w ~/file_test_vulnerabile.txt
+#
+#    mkdir /home/nome_altro_utente/test.txt
+#    chmod o+w ~/cartella_test_vulnerabile
+#
+# ==============================================================================

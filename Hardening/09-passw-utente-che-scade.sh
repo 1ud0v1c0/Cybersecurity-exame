@@ -28,7 +28,18 @@ echo "[+] Impostazione della scadenza password a 1 giorno..."
 #               Trascorsa una giornata, al login successivo verrà imposto il cambio password.
 sudo chage -M 1 "$NEW_USER"
 
+
 echo ""
 echo "[+] Verifica dello stato di invecchiamento della password:"
 # Mostra la configurazione attiva (Maximum number of days between password change: 1)
 sudo chage -l "$NEW_USER"
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO (SENZA ASPETTARE 24 ORE):
+# 1. Forza la scadenza immediata della password (simulando che sia passato il tempo):
+#    sudo chage -d 0 dailyuser
+# 2. Prova a loggarti con l'utente (ti verrà chiesta la password attuale: "PasswordSicura123!"):
+#    su - dailyuser
+# 3. Se la configurazione ha funzionato, il sistema ti darà un avviso dicendo
+#    che la password è scaduta e ti obbligherà a cambiarla prima di darti la shell!
+# ==============================================================================

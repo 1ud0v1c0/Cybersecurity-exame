@@ -24,3 +24,15 @@ ucredit = -1
 lcredit = -1
 ocredit = -1
 enforce_for_root' | sudo tee "$CONF_FILE"
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+# 1. Prova a cambiare la password dell'utente corrente (o di un utente di test):
+#    passwd
+# 2. Inserisci prima la tua password attuale.
+# 3. Prova a inserire una nuova password "debole" (es: "ciao" oppure "password123").
+#    Il sistema dovrebbe rifiutarla dicendo ad esempio "BAD PASSWORD: The password is shorter than 8 characters" 
+#    oppure "BAD PASSWORD: The password contains less than 1 uppercase letters".
+# 4. Inserisci una password che rispetti tutti i criteri (es: "Cyb3rS3c!").
+#    Il sistema dovrebbe accettarla.
+# ==============================================================================

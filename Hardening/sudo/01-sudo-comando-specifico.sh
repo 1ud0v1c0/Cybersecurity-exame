@@ -6,7 +6,12 @@
 # ==============================================================================
 
 # Definiamo l'utente a cui applicare la regola (cambialo con il nome utente target)
-TARGET_USER="studente"
+TARGET_USER="utente_test"
+
+# ==============================================================================
+# Se non hai un utente target, creane uno per effettuare dei test (es. utente_test):
+#    sudo adduser utente_test
+# ==============================================================================
 
 # Creiamo la regola:
 # Sintassi: <UTENTE> <HOST>=(<RUN_AS>) <COMANDO_ASSOLUTO>
@@ -22,3 +27,15 @@ sudo chmod 0440 /etc/sudoers.d/nmap_only
 
 # Verifica sintattica del file sudoers per accertarsi che non ci siano errori
 sudo visudo -c
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+# 1. Cambia utente passando al target:
+#    su - utente_test
+# 2. Verifica i comandi consentiti (ti verrà chiesta la password di studente se configurata, o fallirà se richiede password e non la si ha. sudo -l listerà le regole):
+#    sudo -l
+# 3. Prova ad eseguire il comando consentito:
+#    sudo nmap localhost
+# 4. Prova ad eseguire un comando NON consentito (dovrebbe dare errore):
+#    sudo ls /root
+# ==============================================================================

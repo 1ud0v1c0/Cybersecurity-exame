@@ -41,3 +41,32 @@ sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT
 echo ""
 echo "[+] Configurazione completata. Regole attive:"
 sudo iptables -L -v -n
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+#
+# DENTRO LA MACCHINA (Test blocco uscita):
+# 1. Prova a navigare o pingare un sito esterno:
+#    ping 8.8.8.8
+#    wget http://google.com
+#    (Questi comandi DEVONO bloccarsi/fallire, perché OUTPUT è su DROP).
+#
+# DA FUORI LA MACCHINA (es. dal tuo Mac verso l'IP della macchina):
+# (Trova l'IP con 'ip a' o 'hostname -I', es. 192.168.1.100)
+# 2. Prova a scansionare/collegarti alla porta 80 o 443:
+#    nc -v -z 192.168.1.100 80
+#    nc -v -z 192.168.1.100 443
+#    (Questi DEVONO passare il firewall, mostrando "Connection refused" 
+#     o "Succeeded", senza andare in timeout).
+#
+# 3. Prova a collegarti in SSH:
+#    ssh studente@192.168.1.100 (oppure ssh -p 2222 studente@127.0.0.1 se usi NAT)
+#    (Questo DEVE bloccarsi! Abbiamo rimosso l'eccezione per la porta 22).
+#
+# ⚠️ ATTENZIONE: Questo script TI CHIUDERÀ FUORI da SSH se provi a fare un nuovo
+# login. Per ripristinare l'accesso, dovrai entrare nella console di VirtualBox e 
+# resettare iptables come hai fatto prima (iptables -F e ripristinare le policy ACCEPT).
+# ' sudo iptables -P INPUT ACCEPT '
+# ' sudo iptables -P FORWARD ACCEPT '
+# ' sudo iptables -P OUTPUT ACCEPT '
+# ==============================================================================

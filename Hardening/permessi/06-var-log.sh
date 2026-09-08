@@ -54,3 +54,19 @@ sudo apt update -y && sudo apt install -y lsof
 
 # +D cerca ricorsivamente tutti i file aperti all'interno di quella directory
 sudo lsof +D /var/log
+
+# ==============================================================================
+# COME VERIFICARE SE HA FUNZIONATO:
+# 1. Verifica i permessi della cartella (dovresti vedere drwx------ e root come proprietario):
+#    ls -ld /var/log
+# 2. Cambia utente passando a studente (se non esiste, crealo prima con sudo adduser studente):
+#    su - studente
+# 3. Prova ad entrare nella cartella o a vederne il contenuto normalmente (Permesso negato):
+#    ls /var/log
+#    cd /var/log
+# 4. Prova a leggere un file di log autorizzato (Questo DEVE funzionare):
+#    sudo cat /var/log/dpkg.log
+# 5. Prova a eseguire un comando NON autorizzato o a fare directory traversal (Questo DEVE fallire):
+#    sudo tail /var/log/dpkg.log
+#    sudo cat /var/log/../etc/shadow
+# ==============================================================================

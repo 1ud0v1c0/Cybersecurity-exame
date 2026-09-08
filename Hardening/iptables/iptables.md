@@ -221,6 +221,39 @@ Chain INPUT (policy DROP 12 packets, 720 bytes)
 * Se la colonna **`pkts`** aumenta quando provi a connetterti, la regola sta intercettando correttamente il traffico.
 * `0.0.0.0/0` indica qualsiasi indirizzo IP (*Any*).
 
+### Procedura di verifica rapida all'esame
+
+1. **Trova l'IP della macchina**:
+   ```bash
+   ip a
+   # oppure semplicemente:
+   hostname -I
+   # es. 192.168.1.100 (o l'IP assegnato dal laboratorio)
+   ```
+
+2. **Test da macchina remota / Host**:
+   ```bash
+   # Test porta consentita (es. SSH porta 22):
+   ssh studente@192.168.1.100
+
+   # Test porta web (80, 443):
+   nc -v -z 192.168.1.100 80
+   # -> "Connection refused" = il firewall lascia passare, ma non c'è demone web attivo (OK!)
+   # -> Timeout / Blocco = iptables ha scartato il pacchetto con DROP
+
+   # Test porta NON consentita (es. 21 FTP o 8080):
+   nc -v -z 192.168.1.100 21
+   # -> Deve andare in timeout se la policy di default è DROP
+   ```
+
+3. **Reset di emergenza (se ti chiudi fuori dal terminale fisico)**:
+   ```bash
+   sudo iptables -P INPUT ACCEPT
+   sudo iptables -P FORWARD ACCEPT
+   sudo iptables -P OUTPUT ACCEPT
+   sudo iptables -F
+   ```
+
 ---
 
 ## 6. Persistenza delle Regole (Salvataggio al Riavvio)
